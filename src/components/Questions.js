@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import data from "../database/data";
 
 export default function Questions() {
 
     const [checked, setChecked] = useState(undefined)
+
+    const question = data[0]
+
+    useEffect(() => {
+        console.log(question)
+    }, [])
 
 
     function onSelect(){
@@ -11,14 +18,25 @@ export default function Questions() {
 
   return (
     <div className="questions">
-        <h2 className="text-light">1. What is one benefit of using Azure Functions?</h2>
+        <h2 className="text-light">{question.question}</h2>
 
-        <ul>
-            <li>
-                <input type="radio" name="options" id="q1-option" value={checked} onChange={onSelect()}/>
-                <label className="text-primary" htmlFor="q1-option">A. Azure Functions can be written in a variety of programming languages</label>
-                <div className="check"></div>
-            </li>
+        <ul key={question.id}>
+            {
+                question.options.map((q, i) => (
+                    <li key={i}>
+                        <input 
+                            type="radio" 
+                            name="options" 
+                            id={`q${i}-option`} 
+                            value={false} 
+                            onChange={onSelect()}
+                        />
+                        <label htmlFor={`q${i}-option`}>{q}</label>
+                        <div className="check"></div>
+                    </li>
+                
+                ))
+            }
         </ul>
     </div>
   );
