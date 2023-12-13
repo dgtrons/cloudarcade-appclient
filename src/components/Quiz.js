@@ -1,4 +1,5 @@
 import React from "react";
+import Questions from "./Questions";
 
 export default function Quiz() {   
     
@@ -19,6 +20,8 @@ export default function Quiz() {
             <h1 className="title text-light">AZ900 training quiz</h1>
 
             {/* display questions */}
+
+            <Questions></Questions>
 
             <div className="grid">
                 <button className="btn prev" onClick={onPrev}>Previous</button>
