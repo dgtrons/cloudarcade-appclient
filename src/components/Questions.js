@@ -8,12 +8,12 @@ export default function Questions() {
     const question = data[0]
 
     useEffect(() => {
-        console.log(question)
-    }, [])
+        //console.log(question)
+    })
 
 
     function onSelect(){
-        console.log('radio button change')
+        //console.log('radio button change')
     }
 
   return (

@@ -6,7 +6,7 @@ export const questionReducer = createSlice({
     initialState : {
         queue : [],
         answers : [],
-        trace : []
+        trace : 0
     },
     reducers : {
         startExamAction : (state, action) => {
