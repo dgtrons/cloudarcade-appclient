@@ -33,7 +33,6 @@ export default function Result() {
       </div>
 
       <div className="container">
-        
         <ResultTable></ResultTable>
       </div>
     </div>
