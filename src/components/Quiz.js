@@ -1,19 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Questions from "./Questions";
 
 import { MoveNextQuestion, MovePrevQuestion } from "../hooks/FetchQuestion";
+import { PushAnswer } from "../hooks/setResult";
 
 /** redux store import */
 import { useSelector, useDispatch } from "react-redux";
 
-export default function Quiz() {   
+export default function Quiz() {
 
-    //const trace = useSelector(state => state.questions.trace)
+    const [check, setChecked] = useState(undefined)
+
+    const state = useSelector(state => state)
     const { queue, trace } = useSelector(state => state.questions)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        console.log(trace)
+        console.log(state)
     })
     
     /** Next Button event handler */
@@ -24,6 +27,8 @@ export default function Quiz() {
         if(trace < queue.length){
             /** Update trace value by one using MoveNextAction */
             dispatch(MoveNextQuestion())
+
+            dispatch(PushAnswer(check))
         }
     }
 
@@ -36,7 +41,11 @@ export default function Quiz() {
             dispatch(MovePrevQuestion())
         }
 
-       
+    }
+
+    function onChecked(check) {
+        //console.log(check)
+        setChecked(check)
     }
     
     return (
@@ -45,7 +54,7 @@ export default function Quiz() {
 
             {/* display questions */}
 
-            <Questions></Questions>
+            <Questions onChecked={onChecked} />
 
             <div className="grid">
                 <button className="btn prev" onClick={onPrev}>Previous</button>
