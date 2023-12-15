@@ -14,7 +14,7 @@ export const useFetchQuestion = () => {
     useEffect(() => {
         setGetData(prev => ({ ...prev, isLoading : true }));
 
-        /** asyn function fetch backend data */
+        /** async function fetch backend data */
         (async () => {
             try {
                 let question = data;
@@ -38,4 +38,24 @@ export const useFetchQuestion = () => {
     }, [dispatch]);
 
     return [getData, setGetData];
+}
+
+/** move next action dispatch function */
+export const MoveNextQuestion = () => async (dispatch) => { 
+    try {
+        /** dispatch an action */
+        dispatch(Actions.moveNextAction());
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+/** move prev action dispatch function */
+export const MovePrevQuestion = () => async (dispatch) => { 
+    try {
+        /** dispatch an action */
+        dispatch(Actions.movePrevAction());
+    } catch (error) {
+        console.log(error)
+    }
 }
