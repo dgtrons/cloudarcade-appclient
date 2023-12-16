@@ -27,8 +27,12 @@ export default function Quiz() {
         if(trace < queue.length){
             /** Update trace value by one using MoveNextAction */
             dispatch(MoveNextQuestion())
-
-            dispatch(PushAnswer(check))
+            
+            /** insert a new result in the array */
+            if(result.length <= trace){
+                /** Push answer to result array */
+                dispatch(PushAnswer(check))
+            }
         }
     }
 
