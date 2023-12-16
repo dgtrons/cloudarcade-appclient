@@ -25,6 +25,7 @@ export default function Questions({ onChecked }) {
     function onSelect(i){
         onChecked(i)
         setChecked(i)
+        dispatch(updateResult({ trace, checked }))
     }
 
     if(isLoading) return <h3 className="text-light">Loading...</h3>
@@ -46,7 +47,7 @@ export default function Questions({ onChecked }) {
                             onChange={() => onSelect(i)}
                         />
                         <label htmlFor={`q${i}-option`}>{q}</label>
-                        <div className="check"></div>
+                        <div className={`check ${result[trace] == i ? 'checked' : ''}`}></div>
                     </li>
                 
                 ))

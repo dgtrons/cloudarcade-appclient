@@ -7,6 +7,7 @@ import { PushAnswer } from "../hooks/setResult";
 /** redux store import */
 import { useSelector, useDispatch } from "react-redux";
 import { Navigate } from "react-router-dom";
+
 export default function Quiz() {
 
     const [check, setChecked] = useState(undefined)
@@ -66,7 +67,7 @@ export default function Quiz() {
             <Questions onChecked={onChecked} />
 
             <div className="grid">
-                <button className="btn prev" onClick={onPrev}>Previous</button>
+                {trace > 0 ? <button className="btn prev" onClick={onPrev}>Previous</button> : <></>}
                 <button className="btn next" onClick={onNext}>Next</button>
                 
             </div>
