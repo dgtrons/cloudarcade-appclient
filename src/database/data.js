@@ -1,4 +1,4 @@
-export default[
+export default [
     {
         id: 1,
         question: 'What is one benefit of using Azure Functions?',
@@ -40,3 +40,5 @@ export default[
         ]
     }
 ]
+
+export const answers = [0, 1, 3, 3];

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';   
 import { useDispatch } from 'react-redux';
-import data from '../database/data';
+import data, { answers } from '../database/data';
 
 /** redux actions */
 import * as Actions from '../redux/question_reducer';
@@ -21,14 +21,12 @@ export const useFetchQuestion = () => {
 
                 if (question.length > 0) {
                     setGetData(prev => ({ ...prev, isLoading : false }));
-                    setGetData(prev => ({ ...prev, apiData : question }));
+                    setGetData(prev => ({ ...prev, apiData : { question, answers } }));
 
                     /** dispatch an action */
-                    dispatch(Actions.startExamAction(question));
+                    dispatch(Actions.startExamAction({question, answers}));
                 } else {
                     throw new Error('No question available');
-                    setGetData(prev => ({ ...prev, isLoading : false }));
-                    setGetData(prev => ({ ...prev, serverError : 'No data found' }));
                 }
             } catch (error) {
                 setGetData(prev => ({ ...prev, isLoading : false }));

@@ -16,10 +16,6 @@ export default function Quiz() {
     const { queue, trace } = useSelector(state => state.questions)
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        console.log(result)
-    })
-    
     /** Next Button event handler */
 
     function onNext() {
@@ -34,7 +30,11 @@ export default function Quiz() {
                 /** Push answer to result array */
                 dispatch(PushAnswer(check))
             }
+            setChecked(undefined)
         }
+
+        /** reset the value of the checked variable */
+
     }
 
     /** Previous Button event handler */
